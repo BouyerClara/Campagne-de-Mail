@@ -35,19 +35,19 @@
 	while ($mailer = $reponse->fetch()){
 		if($mailer['valide']) {
 			$mail->setFrom(MAIL_USERNAME, 'Admin');
-	    $mail->addAddress($mailer['email']);
-	    $mail->addReplyTo(MAIL_USERNAME, 'NoReply');
-	    $mail->isHTML(true);
+	    		$mail->addAddress($mailer['email']);
+	    		$mail->addReplyTo(MAIL_USERNAME, 'NoReply');
+	    		$mail->isHTML(true);
 			$mail->Subject = 'Bonjour '.$mailer['prenom'].' '.$mailer['nom'];
 			$mail->Body = "<h1>Ceci est un test pour une campagne de pub.</h1>
-	                   <p>Merci de ne pas renvoyer d'email à cette adresse.</p>";
+	                   		<p>Merci de ne pas renvoyer d'email à cette adresse.</p>";
 			if(!$mail->send()) {
 				// Ici le code pour l'erreur avec le bounce mais je n'ai pas réussi à le faire marcher
-	      echo "Message non envoyé ! <br />";
-	      echo "Erreur de mail: " . $mail->ErrorInfo . "<br />";
-		  }else {
-		    echo 'Le message à été envoyé.';
-		  }
+			      	echo "Message non envoyé ! <br />";
+			      	echo "Erreur de mail: " . $mail->ErrorInfo . "<br />";
+			}else {
+				echo 'Le message à été envoyé.';
+			}
 			sleep(1);
 		}
 		$compteur++;
